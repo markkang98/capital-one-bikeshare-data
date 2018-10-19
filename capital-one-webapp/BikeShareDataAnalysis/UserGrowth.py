@@ -11,9 +11,7 @@ reviews = pd.read_csv("metro-bike-share-trip-data.csv", dtype = {"Starting Lat-L
 
 
 def find_common_times(reviews):
-    commonTimes = {}
-    
-    
+    commonTimes = {}   
     for date in reviews["Start Time"]: 
         if int(date[11:13]) not in commonTimes:
             commonTimes[int(date[11:13])] = 0

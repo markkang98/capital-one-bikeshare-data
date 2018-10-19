@@ -5,6 +5,10 @@ Created on Oct 18, 2018
 '''
 
 import pandas as pd
+import plotly.offline 
+import plotly.graph_objs as go
+from matplotlib.pyplot import title
+
 reviews = pd.read_csv("metro-bike-share-trip-data.csv", dtype = {"Starting Lat-Long": str})
 
 def trial(reviews):
@@ -16,13 +20,13 @@ def trial(reviews):
 
 def season_check(date):
     if  6<= int(date[5:7]) <= 8:
-        return "Summer"
+        return "summer"
     elif 9<= int(date[5:7]) <= 11:
-        return "Fall"
+        return "fall"
     elif int(date[5:7]) == 12 or (int(date[5:7]) == 1 or int(date[5:7]) ==2):
-        return "Winter"
+        return "winter"
     elif 3 <= int(date[5:7]) <= 5:
-        return "Spring"
+        return "spring"
 
 def find_season_count(reviews):
     seasonCount = {}
@@ -46,8 +50,42 @@ def find_season_duration(reviews):
     for season, duration in averageDurationEachSeason.items():
         totalDuration = averageDurationEachSeason[season] 
         totalCount = find_season_count(reviews)[season]
-        averageDurationEachSeason[season] = totalDuration / totalCount
-    print(averageDurationEachSeason)
+        averageDurationEachSeason[season] = totalDuration / (totalCount * 60)
+    return (averageDurationEachSeason)
 
+def find_season_pass_type(reviews):
+    commonPassPerSeason = {}
+    for date, passHolderType in zip(reviews["Start Time"], reviews["Passholder Type"]):
+        season = season_check(date)
+        if season not in commonPassPerSeason:
+            commonPassPerSeason[season] = {}
+        if passHolderType not in commonPassPerSeason[season]:
+            commonPassPerSeason[season][passHolderType] = 0
+        commonPassPerSeason[season][passHolderType] += 1
+    print(commonPassPerSeason)
+    return (commonPassPerSeason)
+
+def visualize_season_pass_type(dic):
+    season = input('Enter the season -> winter, summer, spring, fall:')
+    seasonMap = dic[season]
+    labels = []
+    values = []
+    for key, value in seasonMap.items():
+        labels.append(key)
+        values.append(value)
+        
+    colors = ['#FEBFB3', '#E1396C', '#96D38C', '#D0F9B1']
+    
+    trace = go.Pie(labels=labels, values=values,
+               hoverinfo='label+percent', textinfo= 'value + label' , 
+               textfont=dict(size=20),
+               marker=dict(colors=colors, 
+                           line=dict(color='#000000', width=2)))
+    data = [trace]
+    layout = go.Layout(
+        title = 'Percentage of Passholder Types used in ' + season
+        )
+    fig = go.Figure(data=data, layout=layout)
+    plotly.offline.plot(fig)
 if __name__ == '__main__':
-    find_season_duration(reviews)
+    visualize_season_pass_type(find_season_pass_type(reviews))
