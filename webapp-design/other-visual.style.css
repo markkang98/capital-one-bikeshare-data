@@ -1,0 +1,50 @@
+body{
+	margin: 0;
+}
+
+header {
+	background-image: linear-gradient(#5BABF0, #ADCEEA ); 	
+	padding-top:1.0rem;
+	padding-right: 1.0rem;
+	padding-left: 1.0rem;
+	color: black;
+}
+
+header h1 {
+	margin: 0;
+}
+
+nav ul{
+	margin: 2;
+}
+
+nav ul li{
+	display: inline-block;
+	list-style-type: none;
+	color: white;
+	
+}
+nav ul li a{
+	color: white;
+}
+.btn-small {
+  padding: 0.5rem 1.0rem;
+}
+
+.exp-padding {
+	padding: 2rem 2rem;
+}
+.stick{
+	position: fixed;
+  	top: 0;
+  	right: 0;
+  	padding: 5px;
+	z-index:1000
+}
+.stick-small{
+	position: fixed;
+  	bottom: 0;
+  	right: 0;
+  	padding: 5px;
+	z-index:1000
+}

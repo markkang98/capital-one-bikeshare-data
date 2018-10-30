@@ -8,6 +8,8 @@ import math
 
 reviews = pd.read_csv("metro-bike-share-trip-data.csv", dtype = {"Starting Lat-Long": str})
 
+
+
 def net_movement(reviews, year, month, day):
     target = year + "-" + month + "-" + day
     stationNet = {}
@@ -23,8 +25,7 @@ def net_movement(reviews, year, month, day):
             if int(endingID) not in stationNet:
                 stationNet[int(endingID)] = 0
             stationNet[int(endingID)] += 1
-    print(n)
-    print(stationNet)
+    return (stationNet)
 
 if __name__ == '__main__':
-    net_movement(reviews, "2016","07", "09")
+    pass

@@ -76,5 +76,5 @@ def visualize_average(dic):
     fig = dict(data = data, layout = layout)
     plotly.offline.plot(fig)
 if __name__ == '__main__':
-    visualize_average(find_average_duration(pass_holder_type_duration(reviews)))
+    #visualize_average(find_average_duration(pass_holder_type_duration(reviews)))
     visualize_total(pass_holder_type_duration(reviews))

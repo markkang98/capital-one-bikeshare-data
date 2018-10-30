@@ -74,12 +74,12 @@ def visualize_season_pass_type(dic):
         labels.append(key)
         values.append(value)
         
-    colors = ['#FEBFB3', '#E1396C', '#96D38C', '#D0F9B1']
+   
     
     trace = go.Pie(labels=labels, values=values,
                hoverinfo='label+percent', textinfo= 'value + label' , 
                textfont=dict(size=20),
-               marker=dict(colors=colors, 
+               marker=dict( 
                            line=dict(color='#000000', width=2)))
     data = [trace]
     layout = go.Layout(
@@ -87,5 +87,31 @@ def visualize_season_pass_type(dic):
         )
     fig = go.Figure(data=data, layout=layout)
     plotly.offline.plot(fig)
+def visualize_average_season_duration(dic):
+    x1 = []
+    y1 = []
+    
+    for key, value in dic.items():
+        x1.append(key)
+        y1.append(value)
+    trace1 = go.Bar(
+                    x = x1,
+                    y = y1,
+                    marker=dict(
+                        color='rgb(158,202,225)',
+                    line=dict(
+                    color='rgb(8,48,107)',
+                    width=1.5),
+            ),
+                    )
+    layout = dict(title = 'Average Minutes per Use Each Season',
+              xaxis= dict(title= 'Season'),
+              yaxis= dict(title = 'Average Minutes each Use'),
+            
+            )
+    data=[trace1]
+    fig = dict(data = data, layout = layout)
+    plotly.offline.plot(fig)
 if __name__ == '__main__':
-    visualize_season_pass_type(find_season_pass_type(reviews))
+    #visualize_season_pass_type(find_season_pass_type(reviews))
+    visualize_average_season_duration((find_season_duration(reviews)))

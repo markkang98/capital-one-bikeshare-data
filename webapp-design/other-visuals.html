@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+        <meta charset = 'utf-8'>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="author" content="sung hoon kang">
+        <meta name="description" content="capital one bikeshare data analysis">
+
+        <title>L.A. Bike Share Data Analysis</title>
+
+        <link href="main.css" rel="stylesheet">
+        <link href="other-visual.style.css" rel="stylesheet">
+
+        <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+        
+
+    </head>
+
+    <div class = "stick">
+        <a class="btn btn-primary btn-xl" href="index.html">Home</a>
+    </div>
+    <div class = "stick-small">
+        <a class="btn btn-primary js-scroll-trigger" href="#top">Top</a>
+    </div>
+   
+
+    <div id = "top">
+        <header> 
+            <nav>
+                <h1> Interesting Visualizations of Trends</h1>
+                <ul>
+                    <li><a class="btn btn-primary btn-small js-scroll-trigger" href="#pass">Passholder Type By Season</a></li>
+                    <li><a class="btn btn-primary btn-small js-scroll-trigger" href="#szn-avg">Average Duration by Season</a></li>
+                    <li><a class="btn btn-primary btn-small js-scroll-trigger" href="#route">Route - Pass Combinations</a></li>
+                    <li><a class="btn btn-primary btn-small js-scroll-trigger" href="#tot">Total Minutes by Pass</a></li>
+                </ul>
+            </nav>
+        </header>
+    </div>
+ 
+    <body style="margin: 0;">
+
+        <section class="content-section">
+           <div class="container">
+                <div class="row" id = "pass">
+                    <h1 align="left"> How does passholder use change throughout seasons?</h1>
+                </div>
+                <div class="row">
+                    <p align="left"> The pie charts demonstrate the fraction of the total bike share use taken up by each passholder type during the specified season.</p>
+                </div>
+            <iframe width="550" height="500" frameborder="0" scrolling="no" src="http://plot.ly/~kang.mark426/27.embed"
+            align="right" style="position:relative; top: 0px"></iframe>
+            <iframe width="550" height="500" frameborder="0" scrolling="no" src="http://plot.ly/~kang.mark426/29.embed"
+            align="left" style="position:relative; top: 0px"></iframe>
+            <iframe width="550" height="500" frameborder="0" scrolling="no" src="http://plot.ly/~kang.mark426/31.embed"
+            align="right" style="position:relative; top: 0px"></iframe>
+            <iframe width="550" height="500" frameborder="0" scrolling="no" src="http://plot.ly/~kang.mark426/33.embed"
+            align="left" style="position:relative; top: 0px"></iframe>
+           </div>
+        </section>
+        
+
+
+        <section class="content-section" >
+            <div class="container">
+                <div class="row" id = "szn-avg">
+                    <h1 align="left"> What is the average duration of a ride in each season?</h1>
+                </div>
+                <div class="row">
+                    <p align="left"> From this data, we can see that the average duration of each ride is relatively unaffected by the season. </p>
+                </div>
+            <iframe width="700" height="500" frameborder="0" scrolling="no" src="http://plot.ly/~kang.mark426/35.embed" align="right" style="position:relative; top: 0px"></iframe>
+            </div>
+       </section>
+
+       <section class="content-section" >
+            <div class="container">
+                <div class="row" id = "route">
+                    <h1 align="left"> What are common Passholder Type and Trip Route Category combinations?</h1>
+                </div>
+                <div class="row">
+                    <p align="left"> The one way trip seems to be larger in every passholder type category. However, the number of round trips made by walk - up users seems to be higher than monthly pass users. This might be the fact that monthly pass users might not hesitate to stop a ride, take care of errands, and rent out another bike to get back to their original destination whereas a new walk- up user would worry about whether they would be able to find another bike to get back to their original destination. </p>
+                </div>
+            <iframe width="700" height="500" frameborder="0" scrolling="no" src="http://plot.ly/~kang.mark426/37.embed" align="right" style="position:relative; top: 0px"></iframe>
+            </div>
+       </section>
+
+       
+            
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+        <script src="js/stylish-portfolio.min.js"></script>
+    </body>
+
+</html>

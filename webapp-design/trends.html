@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+		<meta charset = 'utf-8'>
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="author" content="sung hoon kang">
+		<meta name="description" content="capital one bikeshare data analysis">
+
+		<title>L.A. Bike Share Data Analysis</title>
+
+        <link href="main.css" rel="stylesheet">
+        <link href="trends.style.css" rel="stylesheet">
+
+    	<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    	
+
+    </head>
+
+    <div class = "stick">
+        <a class="btn btn-primary btn-xl" href="index.html">Home</a>
+    </div>
+    <div class = "stick-small">
+        <a class="btn btn-primary js-scroll-trigger" href="#top">Top</a>
+    </div>
+   
+
+    <div id = "top">
+    	<header> 
+    		<nav>
+    			<h1> Interesting Visualizations of Trends</h1>
+    			<ul>
+    				<li><a class="btn btn-primary btn-small js-scroll-trigger" href="#hour">Growth by Hour</a></li>
+    				<li><a class="btn btn-primary btn-small js-scroll-trigger" href="#day">Growth by Days</a></li>
+    				<li><a class="btn btn-primary btn-small js-scroll-trigger" href="#avg">Average Minutes by Pass</a></li>
+    				<li><a class="btn btn-primary btn-small js-scroll-trigger" href="#tot">Total Minutes by Pass</a></li>
+    			</ul>
+    		</nav>
+    	</header>
+    </div>
+ 
+    <body style="margin: 0;">
+
+        <section class="content-section">
+   		   <div class="container">
+                <div class="row" id = "hour">
+                    <h1 align="left"> How does bikeshare use change throught the day on average?</h1>
+                </div>
+                <div class="row">
+                    <p align="left"> The peak of bike share use is at 5:00PM.  </p>
+                </div>
+            <iframe width="700" height="500" frameborder="0" scrolling="no" src="http://plot.ly/~kang.mark426/11.embed" align="right" style="position:relative; top: 0px" ></iframe>
+   		   </div>
+        </section>
+    		
+    
+        <section class="content-section" >
+            <div class="container">
+                <div class="row" id = "day">
+                    <h1 align="left"> Has bikeshare use been growing?</h1>
+                </div>
+                <div class="row">
+                    <p align="left"> The graph below demonstrates the 
+                        number of bikeshare use each day from July to March. 
+
+                        We can see a downward trend during the fall season, 
+                        but a slight upward trend during the start of the year. </p>
+                </div>
+            <iframe width="700" height="500" frameborder="0" scrolling="no" src="http://plot.ly/~kang.mark426/13.embed" align="right" style="position:relative; top: 0px"></iframe>
+            </div>
+        </section>
+    
+        <section class="content-section" >
+            <div class="container">
+                <div class="row" id = "avg">
+                    <h1 align="left"> On average, how long does each passholder user ride?</h1>
+                </div>
+                <div class="row">
+                    <p align="left"> From this data, we can see that walk-up users and staff members ride each time for the longest. </p>
+                </div>
+            <iframe width="700" height="500" frameborder="0" scrolling="no" src="http://plot.ly/~kang.mark426/15.embed" align="right" style="position:relative; top: 0px"></iframe>
+            </div>
+       </section>
+    
+        <section class="content-section" >
+            <div class="container">
+                <div class="row" id = "tot">
+                    <h1 align="left"> What are the total hours that each passholder types rode?</h1>
+                </div>
+                <div class="row">
+                    <p align="left"> We can see that the majority of the bike share use is made by walk-up users and monthly pass users. The staff annual total hours are almost negligible, which makes sense since employees make up the smallest percentage of the entire market.</p>
+                </div>
+            <iframe width="700" height="500" frameborder="0" scrolling="no" src="http://plot.ly/~kang.mark426/17.embed" align="right" style="position:relative; top: 0px"></iframe>
+            </div>
+        </section>
+    	<script src="vendor/jquery/jquery.min.js"></script>
+    	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    	<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    	<script src="js/stylish-portfolio.min.js"></script>
+    </body>
+
+</html>
