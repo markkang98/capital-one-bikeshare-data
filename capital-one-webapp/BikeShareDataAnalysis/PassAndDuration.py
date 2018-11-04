@@ -9,6 +9,10 @@ import plotly.offline
 import RegularCommuters
 reviews = pd.read_csv("metro-bike-share-trip-data.csv", dtype = {"Starting Lat-Long": str})
 
+"""
+find total amount of seconds that each pass holder type has ridden
+returns a dictionary of passholder type as keys and total amount of seconds as value
+"""
 def pass_holder_type_duration(reviews):
     durationOfPassType = {}
     
@@ -18,14 +22,19 @@ def pass_holder_type_duration(reviews):
         durationOfPassType[passType] += int(time)
     return durationOfPassType
     
-
+"""
+take in a dictionary and calculate the average distance for each passholder type. 
+does not return a new dictionary. it is a mutator
+"""
 def find_average_duration(dic):
     for key, value in dic.items():
-        totalPassType = RegularCommuters.common_passholder_type()[key]
+        totalPassType = RegularCommuters.common_passholder_type()[key] #gets total amount of passholders for the denominator from RegularCommuters file
         average = value / totalPassType
         dic[key] = average
     return dic
-def visualize_total(dic):
+
+
+def visualize_total(dic): #graphs a bar graph of total hours
     x1 = []
     y1 = []
     
@@ -50,7 +59,9 @@ def visualize_total(dic):
     data=[trace1]
     fig = dict(data = data, layout = layout)
     plotly.offline.plot(fig)
-def visualize_average(dic):
+    
+
+def visualize_average(dic):  #graphs a bar graph of average minutes
     x1 = []
     y1 = []
     

@@ -11,14 +11,8 @@ from matplotlib.pyplot import title
 
 reviews = pd.read_csv("metro-bike-share-trip-data.csv", dtype = {"Starting Lat-Long": str})
 
-def trial(reviews):
-    x=0
-    for _ in reviews["Start Time"]:
-        x+=1
-    print(x)
 
-
-def season_check(date):
+def season_check(date):       #helper method to check the season of the date
     if  6<= int(date[5:7]) <= 8:
         return "summer"
     elif 9<= int(date[5:7]) <= 11:
@@ -28,7 +22,11 @@ def season_check(date):
     elif 3 <= int(date[5:7]) <= 5:
         return "spring"
 
-def find_season_count(reviews):
+"""
+count how many rides are ridden each season. returns a dictionary of seasons 
+and counts of rides each season
+"""
+def find_season_count(reviews):    
     seasonCount = {}
     
     for date in reviews["Start Time"]: 
@@ -39,20 +37,31 @@ def find_season_count(reviews):
         
     return (seasonCount)
 
+"""
+ return a dictionary of the average duration of the rides during
+ each season. uses find_season_count method for the total number of rides
+ in order to calculate average. 
+"""
 def find_season_duration(reviews):
     averageDurationEachSeason = {}
     for date, duration in zip(reviews["Start Time"], reviews["Duration"]): 
         season = season_check(date)
         if season not in  averageDurationEachSeason:
             averageDurationEachSeason[season] = 0
-        averageDurationEachSeason[season] += int(duration)
+        averageDurationEachSeason[season] += int(duration)     #create a dictionary that adds up all the duration times for each season
     
-    for season, duration in averageDurationEachSeason.items():
+    for season, duration in averageDurationEachSeason.items():    
         totalDuration = averageDurationEachSeason[season] 
         totalCount = find_season_count(reviews)[season]
-        averageDurationEachSeason[season] = totalDuration / (totalCount * 60)
+        averageDurationEachSeason[season] = totalDuration / (totalCount * 60)   #calculating the average
     return (averageDurationEachSeason)
 
+
+"""
+returns a dictionary of dictionaries that counts the rides of each passholder type during each specific season
+the key would be seasons, with values of dictionaries. in those dictionaries, the keys would be the 
+passholder type and the value would be the count for that passholder type during that season. 
+"""
 def find_season_pass_type(reviews):
     commonPassPerSeason = {}
     for date, passHolderType in zip(reviews["Start Time"], reviews["Passholder Type"]):
@@ -62,9 +71,12 @@ def find_season_pass_type(reviews):
         if passHolderType not in commonPassPerSeason[season]:
             commonPassPerSeason[season][passHolderType] = 0
         commonPassPerSeason[season][passHolderType] += 1
-    print(commonPassPerSeason)
     return (commonPassPerSeason)
 
+"""
+create a pie chart for the specified season that
+demonstrates how much of the rides were made by each passholder type
+"""
 def visualize_season_pass_type(dic):
     season = input('Enter the season -> winter, summer, spring, fall:')
     seasonMap = dic[season]
@@ -87,7 +99,9 @@ def visualize_season_pass_type(dic):
         )
     fig = go.Figure(data=data, layout=layout)
     plotly.offline.plot(fig)
-def visualize_average_season_duration(dic):
+    
+
+def visualize_average_season_duration(dic):  #create a bar graph for average duration each season
     x1 = []
     y1 = []
     

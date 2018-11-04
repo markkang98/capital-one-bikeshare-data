@@ -9,24 +9,36 @@ import plotly.offline
 
 reviews = pd.read_csv("metro-bike-share-trip-data.csv", dtype = {"Starting Lat-Long": str})
 
-
+"""
+return a sorted dictionary with keys of the time of the day and 
+value of the amount of rides made during that time. Times are split by the hour 
+"""
 def find_common_times(reviews):
     commonTimes = {}   
     for date in reviews["Start Time"]: 
-        if int(date[11:13]) not in commonTimes:
+        if int(date[11:13]) not in commonTimes:  #splies date to capture the time
             commonTimes[int(date[11:13])] = 0
         commonTimes[int(date[11:13])] += 1
         
     return dict(sorted(commonTimes.items()))
-
+"""
+return a sorted dictionary with keys of day and 
+value of the amount of rides made during that day 
+"""
 def find_common_dates(reviews):
     commonDates = {}
     for date in reviews["Start Time"]: 
-        if date[0:10] not in commonDates:
+        if date[0:10] not in commonDates:     #splies date to capture the day
             commonDates[date[0:10]] = 0
         commonDates[date[0:10]] += 1
         
     return dict(sorted(commonDates.items()))
+
+
+"""
+create a scatter plot that demonstrates the average trend of bikeshare use
+throughout the day 
+"""
 def visualize_hourly_use(dic):
     x1 = []
     y1 = []
@@ -50,7 +62,10 @@ def visualize_hourly_use(dic):
     fig = dict(data = data, layout = layout)
     plotly.offline.plot(fig)
     
-    
+"""
+create a scatter plot that demonstrates the average trend of bikeshare use throughout
+the entire time period with increments by each day  
+"""  
 def visualize_daily_use(dic):
     x1 = []
     y1 = []
