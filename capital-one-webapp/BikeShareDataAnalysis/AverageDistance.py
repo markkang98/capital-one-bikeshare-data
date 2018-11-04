@@ -20,7 +20,7 @@ def find_series_distance(reviews):
     latitude2 = math.radians(reviews["Ending Station Latitude"])
     longitude1 = math.radians(reviews["Starting Station Longitude"])
     longitude2 = math.radians(reviews["Ending Station Longitude"])
-    
+    duration = reviews["Duration"]
     earthRadius = 6373.0
     
     diffLat = latitude1 - latitude2
@@ -31,7 +31,11 @@ def find_series_distance(reviews):
     
     distance = earthRadius * x   #haversine formula
     
-    return distance 
+    if distance == 0: 
+        return duration * 0.00536448 #for round trips, use average of los angeles bikers from internet of km/s and the biker's duration to caluclate distance
+                                    
+    else:
+        return distance 
 
 def find_average_distance():
     return reviews.apply(find_series_distance, axis =1).mean() #applies find_series_method to caluclate distance for each row and returns average
